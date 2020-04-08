@@ -50,16 +50,6 @@ class conv_task(nn.Module):
     def forward(self, x):
         task = config_task.task
         y = self.conv(x)
-    	'''
-            if self.second == 0:
-                if config_task.isdropout1:
-                    x = F.dropout2d(x, p=0.5, training = self.training)
-            else:
-                if config_task.isdropout2:
-                    x = F.dropout2d(x, p=0.5, training = self.training)
-            if config_task.mode == 'parallel_adapters' and self.is_proj:
-                y = y + self.parallel_conv[task](x)
-    	'''
         y = self.bns[task](y)
 
         return y
