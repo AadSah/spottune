@@ -81,7 +81,10 @@ def train(dataset, poch, train_loader, net, agent, net_optimizer, agent_optimize
     for i, task_batch in enumerate(train_loader):
         images = task_batch[0] 
         labels = task_batch[1]    
-
+	
+	print('images.shape = ' + str(images.shape))
+	print('labels.shape = ' + str(labels.shape))
+	
         if use_cuda:
             images, labels = images.cuda(async=True), labels.cuda(async=True)
         images, labels = Variable(images), Variable(labels)	   
